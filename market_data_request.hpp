@@ -2,11 +2,15 @@
 
 #include <string>
 
-// 用于发起请求和发送 Kafka 的主逻辑函数
 struct Task {
     std::string exchange;
     std::string base;
     std::string quote;
 };
 
+// 核心功能
 void fetch_and_produce_price(const Task& t);
+
+// Kafka producer 生命周期
+void init_kafka_producer();
+void close_kafka_producer();

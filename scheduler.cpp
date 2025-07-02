@@ -48,7 +48,7 @@ void Scheduler::run() {
 
         // 找下次要执行任务的最小时间
         auto next_it = std::min_element(tasks.begin(), tasks.end(),
-            [](const ScheduledTask& a, const ScheduledTask& b) {
+            [](const SchedulerTask& a, const SchedulerTask& b) {
                 return a.nextRunTime < b.nextRunTime;
             });
 

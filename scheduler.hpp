@@ -1,5 +1,4 @@
-#ifndef SCHEDULER_H
-#define SCHEDULER_H
+#pragma once
 
 #include <functional>
 #include <chrono>
@@ -32,5 +31,3 @@ class Scheduler{
         condition_variable cv;
         atomic<bool> running;
 };
-
-#endif

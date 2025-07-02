@@ -42,8 +42,11 @@ void produce_to_kafka(const std::string& topic, const std::string& message) {
 // 主函数：构造 URL、请求、发送 Kafka
 void fetch_and_produce_price(const Task& t) {
     // 构造 URL
-    std::string url = "http://localhost:8000/price/" + t.base + "/" + t.quote +
-                      "?exchange=" + t.exchange;
+    std::string url = "http://10.0.0.161:8000/market/price"
+                    "?exchange=" + t.exchange +
+                    "&base=" + t.base +
+                    "&quote=" + t.quote;
+
 
     CURL* curl = curl_easy_init();
     if (!curl) {
@@ -59,10 +62,11 @@ void fetch_and_produce_price(const Task& t) {
 
     CURLcode res = curl_easy_perform(curl);
     if (res == CURLE_OK) {
-        std::cout << "[✔] Got response from " << t.exchange << " " << t.base << "/" << t.quote << "\n";
+        std::cout << "Got response from " << t.exchange << " " << t.base << "/" << t.quote << "\n";
+        // std::cout << "Response body: " << response << std::endl;
         produce_to_kafka(topic_name, response);
     } else {
-        std::cerr << "[✘] CURL error: " << curl_easy_strerror(res) << "\n";
+        std::cerr << "CURL error: " << curl_easy_strerror(res) << "\n";
     }
 
     curl_easy_cleanup(curl);
