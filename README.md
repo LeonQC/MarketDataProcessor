@@ -37,15 +37,14 @@ make clean
 
 ### 主程序 (main.cpp)
 - 自动为两个交易市场（bitmart、cryptocom）的5种热门加密货币创建数据获取任务
-- 每个任务每5秒执行一次
+- 每个任务每10秒执行一次
 - 总共创建10个并发任务（2个市场 × 5种加密货币）
 - 支持优雅的程序关闭
 
 ### 监控的加密货币
 - BTC (Bitcoin)
 - ETH (Ethereum)  
-- BNB (Binance Coin)
-- ADA (Cardano)
+- XRP (Ripple)
 - SOL (Solana)
 
 ### 支持的交易市场
@@ -90,10 +89,7 @@ MarketDataProcessor/
 ├── scheduler.cpp           # 调度器实现
 ├── Makefile               # 编译配置
 ├── README.md              # 项目说明
-└── test/                  # 测试程序
-    ├── kafka_test.cpp
-    ├── scheduler_test.cpp
-    └── fetch_test.cpp
+
 ```
 
 ## 使用说明

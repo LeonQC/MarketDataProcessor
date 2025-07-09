@@ -66,7 +66,7 @@ int main() {
     
     std::cout << "总共创建了 " << popular_cryptos.size() 
               << " 个数据获取任务" << std::endl;
-    std::cout << "数据获取间隔: 5秒" << std::endl;
+    std::cout << "数据获取间隔: 10秒" << std::endl;
     std::cout << "按 Ctrl+C 停止程序" << std::endl;
     
     // 主程序运行，等待用户中断
