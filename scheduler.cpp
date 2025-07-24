@@ -15,16 +15,21 @@ void Scheduler::start() {
 
 void Scheduler::stop() {
     if (!running) return;
+    
+    std::cout << "Stopping scheduler..." << std::endl;
+    
     {
         std::lock_guard<std::mutex> lock(mtx);
         running = false;
+        tasks.clear();  // 清理等待中的任务
         cv.notify_all();
     }
+    
     if (schedulerThread.joinable()) {
         schedulerThread.join();
     }
+    std::cout << "Scheduler stopped." << std::endl;
 }
-
 void Scheduler::addTask(const std::function<void()>& task, int interval_ms) {
     std::lock_guard<std::mutex> lock(mtx);
     SchedulerTask t;

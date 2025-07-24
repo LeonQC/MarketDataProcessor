@@ -15,7 +15,7 @@ int main() {
     vector<string> popular_cryptos = {"BTC", "ETH", "XRP", "SOL"};
     
     // 定义交易市场
-    vector<string> exchanges = {"bitmart", "cryptocom"};
+    vector<string> exchanges = {"bitmart", "cryptocom","MEXC"};
     
     // 创建调度器
     Scheduler scheduler{};
